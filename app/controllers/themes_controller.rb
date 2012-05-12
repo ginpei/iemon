@@ -3,7 +3,7 @@ class ThemesController < ApplicationController
   # GET /themes.json
   def index
    # @themes = Theme.order("target_date DESC").all
-    @themes = Theme.page(params[:page])
+    @themes = Theme.where('target_date IS NOT NULL').where('target_date <= ?', Date.today).page(params[:page])
 
     respond_to do |format|
       format.html # index.html.erb

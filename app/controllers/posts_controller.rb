@@ -23,7 +23,8 @@ class PostsController < ApplicationController
   def new
     login_required
     @post = Post.new
-    @today = Theme.today
+    @today = Theme.active.first
+    p @today
     @user = current_user
 
     unless @today.nil?
