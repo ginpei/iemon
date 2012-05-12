@@ -30,9 +30,8 @@
         <%= f.submit %>
       </div>
     <% else %>
-        <%= f.label :body %><br />
-        <b>"<%= @already_post.body %>"</b><br />
-        Today's post already exist...
+        皮算用: <b>"<%= @already_post.body %>"</b><br />
+        <p>memo: Today's post already exist...</p>
     <% end %>
 
   <% end %>

@@ -3,6 +3,11 @@
 <% @posts.each do |post| %>
   <hr />
   <div><%= post.theme.target_date %></div>
-  <div>お題: <b><%= post.theme.body %></b></div>
-  <div>皮算用: <%= post.body %></div>
+  <% unless post.theme.nil? %></td>
+    <div>お題: <b><%= post.theme.body %></b></div>
+    <div>皮算用: <%= post.body %></div>
+  <% end %>
 <% end %>
+
+<br />
+<%= paginate @posts %>

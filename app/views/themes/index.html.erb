@@ -7,3 +7,6 @@ admin: <%= link_to 'New Theme', new_theme_path %>
   <div><%= theme.target_date %></div>
   <div>お題: <b><%= link_to theme.body, theme %></b></div>
 <% end %>
+
+<br />
+<%= paginate @themes %>

@@ -2,7 +2,8 @@ class ThemesController < ApplicationController
   # GET /themes
   # GET /themes.json
   def index
-    @themes = Theme.order("target_date DESC").all
+   # @themes = Theme.order("target_date DESC").all
+    @themes = Theme.page(params[:page])
 
     respond_to do |format|
       format.html # index.html.erb

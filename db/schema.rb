@@ -38,14 +38,7 @@ ActiveRecord::Schema.define(:version => 20120512075819) do
     t.datetime "updated_at", :null => false
   end
 
-  create_table "users", :force => true do |t|
-    t.string   "provider"
-    t.string   "uid"
-    t.string   "name"
-    t.string   "screen_name"
-    t.string   "image"
-    t.datetime "created_at",  :null => false
-    t.datetime "updated_at",  :null => false
-  end
+# Could not dump table "users" because of following StandardError
+#   Unknown type 'stirng' for column 'age'
 
 end
