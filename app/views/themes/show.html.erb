@@ -3,10 +3,17 @@
 <% unless @theme.nil? %>
 <div id="theme-posts">
   <div class="header">
-    <div class="date"><time><%= @theme.target_date %></time></div>
+    <div class="date"><%= image_tag 'fukidashi-xs.gif', :size => '39x36', :alt => '' %><time><%= @theme.target_date %></time></div>
     <h2><%= @theme.body %></h2>
   </div>
 </div>
+<script id="template-post" type="text/plain">
+<div class="post">
+  <div class="body">#{body}</div>
+  <div class="author">（#{author}）</div>
+  <span class="spike"></span>
+</div>
+</script>
 <% else %>
   有効なお題はありません
 <% end %>

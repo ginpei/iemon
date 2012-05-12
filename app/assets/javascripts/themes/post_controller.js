@@ -4,7 +4,7 @@
     __constructor: function() {
       // TODO
       this._template = {
-        _body: '<div class="post">#{body}</div>',
+        _body: $('#template-post').prop('text'),
         apply: function(data) {
           var html = this._body.replace(/#{(\w+)}/g, function(m, key) {
             var text = data[key] || '';
@@ -68,7 +68,7 @@
         for (var i = 0; i < 3; i++) {
           posts.push({
             body: 'わあい50万円　あかり50万円だいすき',
-            author: '50歳・会社員・男性'
+            author: (i%2 ? '50歳・会社員・男性' : '')
           });
         }
 
@@ -116,6 +116,11 @@
       var template = this._template;
       var $post = template.apply(post);
 
+      // remove author if nothing
+      if (!post.author) {
+        $post.find('.author').remove();
+      }
+
       // put into the page
       var $canvas = this._getCanvas();
       $canvas.append($post);
@@ -138,6 +143,7 @@
 
       $post.data('left-positioned', (pos.left + width/2 < canvasWidth/2));
       $post.data('above-positioned', (pos.top + height/2 < canvasHeight/2));
+      $post.toggleClass('above-positioned', (pos.top + height/2 < canvasHeight/2));
 
       // centering
       this._centerPost($post);

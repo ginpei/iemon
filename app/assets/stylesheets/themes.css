@@ -1,31 +1,9 @@
-html, body {
-  height: 100%;
-}
-body {
-  font-size: 40px;
-  margin: 0;
-}
-h2 {
-  margin: 0;
-}
-
-/**
- * Global Header
- */
-#global_header {
-  right: 20px;
-  position: absolute;
-  top: 0;
-}
-#global_header h2 {
-  opacity: .5;
-}
-
 /**
  * Posts for the theme
  */
 #theme-posts {
   height: 100%;
+  font-size: 20px;
   overflow: hidden;
   position: absolute;
   top: 0;
@@ -39,20 +17,24 @@ h2 {
   width: 100%;
 }
 #theme-posts .date {
-  margin: 0 40px;
+  line-height: 40px;
+  margin: 0 80px;
+}
+#theme-posts .date img {
+  margin: 0 .2em;
+  vertical-align: bottom;
 }
 #theme-posts h2 {
-  text-align: center;
+  margin: 0 80px;
   padding: 10px 0;
 }
 #theme-posts .post {
   background-color: #ffd1ab;
-  border: solid 3px #ff9260;
+  border: solid 3px #ffc19b;
   border-radius: 80px;
   max-width: 60%;
   padding: 50px;
   position: absolute;
-  text-align: center;
   -webkit-transform: scale(0);
   left: -9999px;
 }
@@ -62,4 +44,26 @@ h2 {
 }
 #theme-posts .post.ready:last-child {
   -webkit-transition: -webkit-transform .1s;
+}
+#theme-posts .post .body {
+  text-align: center;
+}
+#theme-posts .post .author {
+  text-align: right;
+}
+#theme-posts .post .spike {
+  background-image: url("fukidashi-spike.gif");
+  background-position: -25px 0;
+  height: 21px;
+  left: 0;
+  margin: auto;
+  position: absolute;
+  right: 0;
+  bottom: 100%;
+  width: 25px;
+}
+#theme-posts .post.above-positioned .spike {
+  background-position: 0 0;
+  bottom: auto;
+  top: 100%;
 }
