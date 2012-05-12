@@ -1,19 +1,9 @@
-<h1>Listing themes</h1>
+<h1>過去のお題</h1>
 
-<table>
-  <tr>
-    <th>Body</th>
-    <th>Target date</th>
-  </tr>
+admin: <%= link_to 'New Theme', new_theme_path %>
 
 <% @themes.each do |theme| %>
-  <tr>
-    <td><%= theme.body %></td>
-    <td><%= theme.target_date %></td>
-  </tr>
+  <hr />
+  <div><%= theme.target_date %></div>
+  <div>お題: <b><%= link_to theme.body, theme %></b></div>
 <% end %>
-</table>
-
-<br />
-
-<%= link_to 'New Theme', new_theme_path %>

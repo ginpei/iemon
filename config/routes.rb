@@ -5,8 +5,9 @@ Iemon::Application.routes.draw do
  # :new and :create are temporary...
     resources :posts, :only => [:index] # /themes/:id/posts
   end
+
   get "/profile" => "user#edit"
-  put "/user.:id" => "user#update" # @todo use `put "profile"'
+  put "/profile" => "user#update"
 
   match "/auth/:provider/callback" => "sessions#callback"
   match "/auth/failure" => "sessions#failure"
