@@ -11,7 +11,18 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120512074459) do
+ActiveRecord::Schema.define(:version => 20120512075819) do
+
+  create_table "posts", :force => true do |t|
+    t.integer  "theme_id"
+    t.integer  "user_id"
+    t.string   "body"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
+
+  add_index "posts", ["theme_id"], :name => "index_posts_on_theme_id"
+  add_index "posts", ["user_id"], :name => "index_posts_on_user_id"
 
   create_table "themes", :force => true do |t|
     t.string   "body"
