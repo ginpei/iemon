@@ -25,7 +25,6 @@ class PostsController < ApplicationController
     unless @today.nil?
       @already_post = Post.where(:theme_id => @today.id).where(:user_id => @user.id).first
     end
-      p @already_post
 
     respond_to do |format|
       format.html # new.html.erb
