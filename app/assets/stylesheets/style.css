@@ -16,6 +16,7 @@ list-style:none;
 #head{
 padding:0 0 48px;
 position:relative;
+z-index:10;
 }
 
 #logo{

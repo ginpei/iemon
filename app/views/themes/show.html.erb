@@ -1,14 +1,12 @@
 <p id="notice"><%= notice %></p>
 
 <% unless @theme.nil? %>
-  <h2>お題: <%= @theme.body %></h2>
-  (date: <%= @theme.target_date %>)
-
-  <p>
-  todo: ここにみんなのpostsをポップ表示する
-  <br />
-  <%= @theme.posts.map &:body %>
-  </p>
+<div id="theme-posts">
+  <div class="header">
+    <div class="date"><time><%= @theme.target_date %></time></div>
+    <h2><%= @theme.body %></h2>
+  </div>
+</div>
 <% else %>
   有効なお題はありません
 <% end %>
