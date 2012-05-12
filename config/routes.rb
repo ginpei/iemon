@@ -1,6 +1,4 @@
 Iemon::Application.routes.draw do
-  resources :posts
-
   get "welcome/index"
 
   match "/auth/:provider/callback" => "sessions#callback"
