@@ -1,7 +1,7 @@
 Iemon::Application.routes.draw do
   resources :posts, :only => [:index, :new, :create]
 
-  resources :themes, :only => [:index, :show, :new, :create] do
+  resources :themes do
     resources :posts, :only => [:index] # /themes/:id/posts
     collection do
       get :edit_active
