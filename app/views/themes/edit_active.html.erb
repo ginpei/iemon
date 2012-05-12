@@ -24,6 +24,8 @@
     <th>Target date</th>
     <th>Status</th>
     <th>Updated at</th>
+    <th>Edit</th>
+    <th>Destroy</th>
   </tr>
 
 <% @themes.each do |theme| %>
@@ -32,6 +34,8 @@
     <td><%= theme.target_date %></td>
     <td><%= theme.status %></td>
     <td><%= theme.updated_at %></td>
+    <td><%= link_to 'edit', edit_theme_path(theme) %></td>
+    <td><%= link_to 'delete', theme, :method => :delete, :confirm => 'Are you sure?'  %></td>
   </tr>
 <% end %>
 </table>
