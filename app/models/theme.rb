@@ -5,14 +5,16 @@ class Theme < ActiveRecord::Base
 
   has_many :posts
 
-  validates :target_date, :uniqueness => true
+  validates :target_date, :uniqueness => true, :allow_nil => true
 
   default_scope :order => 'target_date DESC'
   paginates_per 20
 
+=begin
   def self.today
     Theme.where(:target_date => Date.today).first # TODO: 21:00-翌9:00までとすること
   end
+=end
 
   scope :active, where(:status => 'active')
 
