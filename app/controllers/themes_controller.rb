@@ -2,11 +2,10 @@ class ThemesController < ApplicationController
   # GET /themes
   # GET /themes.json
   def index
-    @themes = Theme.all
+    @themes = Theme.order("target_date DESC").all
 
     respond_to do |format|
       format.html # index.html.erb
-      format.json { render json: @themes }
     end
   end
 
@@ -44,11 +43,9 @@ class ThemesController < ApplicationController
 
     respond_to do |format|
       if @theme.save
-        format.html { redirect_to @theme, notice: 'Theme was successfully created.' }
-        format.json { render json: @theme, status: :created, location: @theme }
+        format.html { redirect_to themes_path, notice: 'Theme was successfully created.' }
       else
         format.html { render action: "new" }
-        format.json { render json: @theme.errors, status: :unprocessable_entity }
       end
     end
   end
