@@ -29,7 +29,7 @@ h2 {
   overflow: hidden;
 }
 #theme h2 {
-  background-color: #6cb;
+  background-color: #ff7200;
   color: #fff;
   display: none;
   margin: 20px;
@@ -39,8 +39,8 @@ h2 {
   width: 100%;
 }
 #theme .post {
-  background-color: #fff;
-  border: solid 3px #000;
+  background-color: #ffd1ab;
+  border: solid 3px #ff9260;
   border-radius: 80px;
   max-width: 60%;
   padding: 50px;
