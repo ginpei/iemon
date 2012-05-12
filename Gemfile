@@ -5,7 +5,12 @@ gem 'rails', '3.2.3'
 # Bundle edge Rails instead:
 # gem 'rails', :git => 'git://github.com/rails/rails.git'
 
-gem 'sqlite3'
+group :development, :test do
+  gem 'sqlite3'
+end
+group :production do
+  gem 'pg'
+end
 
 
 # Gems used only for assets and not required
@@ -42,6 +47,13 @@ gem "omniauth"
 gem "omniauth-twitter"
 gem "kaminari"
 
-# for SAKURA VPS server
-gem 'execjs'
-gem 'therubyracer'
+group :development, :test do
+  # for SAKURA VPS server
+  gem 'execjs'
+  gem 'therubyracer'
+end
+
+group :production do
+  # Server App for Heroku
+  gem 'thin'
+end
