@@ -1,0 +1,15 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Body:</b>
+  <%= @theme.body %>
+</p>
+
+<p>
+  <b>Target date:</b>
+  <%= @theme.target_date %>
+</p>
+
+
+<%= link_to 'Edit', edit_theme_path(@theme) %> |
+<%= link_to 'Back', themes_path %>
