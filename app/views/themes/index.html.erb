@@ -1,11 +1,10 @@
 <div id="content">
-admin: <%= link_to 'New Theme', new_theme_path %>
     <h1>過去のお題</h1>
     <ul>
       <% @themes.each do |theme| %>
     	<li>
         	<span><%= theme.target_date %></span>お題: <%= link_to theme.body, theme %>
-            <div class="post">回答: <%= theme.posts.limit(3).map &:body %></div>
+            <div class="post">回答数: <%= theme.posts.count %></div>
 		</li>
   <% end %>
     </ul>
