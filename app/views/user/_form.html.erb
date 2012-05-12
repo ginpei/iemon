@@ -13,15 +13,15 @@
 
   <div class="field">
     <%= f.label :gender %><br />
-    <%= f.text_field :gender %>
+    <%= f.select :gender, %w(非公開 男 女) %>
   </div>
   <div class="field">
     <%= f.label :age %><br />
-    <%= f.text_field :age %>
+    <%= f.select :age, %w(非公開 10代 20代 30代 40代 50代 60代) %>
   </div>
   <div class="field">
     <%= f.label :job %><br />
-    <%= f.text_field :job %>
+    <%= f.select :job, %w(非公開 学生 会社員 フリーター 無職) %>
   </div>
   <div class="actions">
     <%= f.submit %>
