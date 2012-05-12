@@ -49,7 +49,7 @@ class ThemesController < ApplicationController
 
     respond_to do |format|
       if @theme.save
-        format.html { redirect_to themes_path, notice: 'Theme was successfully created.' }
+        format.html { redirect_to  :edit_active_themes, notice: 'Theme was successfully created.' }
       else
         format.html { render action: "new" }
       end
@@ -92,7 +92,8 @@ class ThemesController < ApplicationController
     only_administer
 
     @active = Theme.active.first
-    @themes = Theme.order("target_date DESC").all
+    @themes_old = Theme.where('target_date IS NOT NULL').order("target_date DESC").all
+    @themes = Theme.where('target_date IS NULL').order(:id).all
     respond_to do |format|
       format.html # index.html.erb
     end
