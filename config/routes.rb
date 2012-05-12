@@ -1,4 +1,6 @@
 Iemon::Application.routes.draw do
+  resources :themes, :only => [:index, :show, :new, :create] # :new and :create are temporary...
+
   get "/profile" => "user#index"
   get "/profile/edit" => "user#edit"
   put "/user.:id" => "user#update"
