@@ -4,7 +4,7 @@ class PostsController < ApplicationController
   # GET /posts.json
   def index
     if params[:theme_id]
-      @posts = Post.page(params[:page])
+      @posts = Post.includes(:user).page(params[:page])
     else
       login_required
       @user = current_user
@@ -14,7 +14,9 @@ class PostsController < ApplicationController
 
     respond_to do |format|
       format.html # index.html.erb
-      format.json { render json: @posts }
+      format.json { render json: @posts.to_json(
+        :include => { :user => { :only => [:gender, :age, :job] } }
+      ) }
     end
   end
 
@@ -23,7 +25,8 @@ class PostsController < ApplicationController
   def new
     login_required
     @post = Post.new
-    @today = Theme.today
+    @today = Theme.active.first
+    p @today
     @user = current_user
 
     unless @today.nil?
