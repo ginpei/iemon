@@ -1,13 +1,15 @@
 class PostsController < ApplicationController
-  before_filter {
-    login_required
-  }
 
   # GET /posts
   # GET /posts.json
   def index
-    @user = current_user
-    @posts = Post.where(:user_id => @user.id)
+    if params[:theme_id]
+      @posts = Post.all
+    else
+      login_required
+      @user = current_user
+      @posts = Post.where(:user_id => @user.id)
+    end
 
     respond_to do |format|
       format.html # index.html.erb
@@ -18,6 +20,7 @@ class PostsController < ApplicationController
   # GET /posts/new
   # GET /posts/new.json
   def new
+    login_required
     @post = Post.new
     @today = Theme.today
     @user = current_user
@@ -34,6 +37,7 @@ class PostsController < ApplicationController
   # POST /posts
   # POST /posts.json
   def create
+    login_required
     @user = current_user
     @post =Post.new
     @post.user_id = @user.id
