@@ -25,9 +25,11 @@ class Theme < ActiveRecord::Base
     raise ArgumentError unless Theme.where(:target_date => date).size == 0
     Theme.deactivate
     update_target = Theme.where('status IS NULL').order('created_at').first # 一番古いものを抽出
-    update_target.status = 'active'
-    update_target.target_date = date
-    update_target.save
+    unless update_target.nil?
+      update_target.status = 'active'
+      update_target.target_date = date
+      update_target.save
+    end
     return update_target
   end
 
