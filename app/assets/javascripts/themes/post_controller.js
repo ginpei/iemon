@@ -7,7 +7,10 @@
         _body: $('#template-post').prop('text'),
         apply: function(data) {
           var html = this._body.replace(/#{(\w+)}/g, function(m, key) {
-            var text = data[key] || '';
+            var text = (data[key] || '')
+              .replace(/&/g, '&amp;')
+              .replace(/</g, '&lt;')
+              .replace(/>/g, '&gt;');
             return text;
           });
 
@@ -27,6 +30,12 @@
      * @type Array
      */
     _posts: null,
+
+    /**
+     * Posts page counting.
+     * @type Number
+     */
+    _page: 1,
 
     /**
      * Height of the theme.
@@ -60,21 +69,34 @@
      */
     loadPosts: function() {
       var that = this;
+      var url = '/themes/2/posts.json?page=' + this._page;
+      this._page++;
+      $.ajax(url, {
+        success: function(data, textStatus, xhr) {
+          if (data.length < 1) {
+            that._page = 1;
+            that.loadPosts();
+            return;
+          }
 
-      // TODO: get from server
-      setTimeout(function() {
-        // make dummy posts
-        var posts = that._posts = [];
-        for (var i = 0; i < 3; i++) {
-          posts.push({
-            body: 'わあい50万円　あかり50万円だいすき',
-            author: (i%2 ? '50歳・会社員・男性' : '')
-          });
+          var posts = that._posts = [];
+
+          for (var i = 0, l = data.length; i < l; i++) {
+            var d = data[i];
+            var author = [];
+            if (d.user.age) author.push(d.user.age);
+            if (d.user.job) author.push(d.user.job);
+            if (d.user.gender) author.push(d.user.gender);
+            posts.push({
+              body: d.body,
+              author: author.join('・')
+            });
+          }
+
+          // show one (real move)
+          that.showPost();
         }
-
-        // show one (real move)
-        that.showPost();
-      }, 1);
+      });
     },
 
     /**
@@ -250,7 +272,6 @@
       }
 
       var pos = $post.data('position');
-      console.log(pos);
 
       // horizontal
       if ($post.data('left-positioned')) {
