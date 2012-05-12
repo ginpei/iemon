@@ -3,6 +3,8 @@
 class Theme < ActiveRecord::Base
   attr_accessible :body, :target_date
 
+  has_many :posts
+
   validates :target_date, :uniqueness => true
 
   default_scope :order => 'target_date DESC'

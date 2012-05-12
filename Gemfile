@@ -41,3 +41,7 @@ gem "jquery-rails"
 gem "omniauth"
 gem "omniauth-twitter"
 gem "kaminari"
+
+# for SAKURA VPS server
+gem 'execjs'
+gem 'therubyracer'

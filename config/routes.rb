@@ -8,8 +8,9 @@ Iemon::Application.routes.draw do
       post :activate
     end
   end
+
   get "/profile" => "user#edit"
-  put "/user.:id" => "user#update" # @todo use `put "profile"'
+  put "/profile" => "user#update"
 
   match "/auth/:provider/callback" => "sessions#callback"
   match "/auth/failure" => "sessions#failure"

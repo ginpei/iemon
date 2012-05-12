@@ -1,14 +1,10 @@
 <p id="notice"><%= notice %></p>
 
-<p>
-  <b>Body:</b>
-  <%= @theme.body %>
-</p>
+<h2>お題: <%= @theme.body %></h2>
+(date: <%= @theme.target_date %>)
 
 <p>
-  <b>Target date:</b>
-  <%= @theme.target_date %>
+todo: ここにみんなのpostsをポップ表示する
+<br />
+<%= @theme.posts.map &:body %>
 </p>
-
-
-<%= link_to 'Back', themes_path %>

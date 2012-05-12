@@ -1,22 +1,13 @@
-<h1>Listing posts</h1>
-
-<table>
-  <tr>
-    <th>Date</th>
-    <th>Theme</th>
-    <th>Body</th>
-  </tr>
+<h1>過去の皮算用</h1>
 
 <% @posts.each do |post| %>
-  <tr>
-    <td><%= post.theme.target_date unless post.theme.nil? %></td>
-    <td><%= post.theme.body  unless post.theme.nil? %></td>
-    <td><%= post.body %></td>
-  </tr>
+  <hr />
+  <div><%= post.theme.target_date %></div>
+  <% unless post.theme.nil? %></td>
+    <div>お題: <b><%= post.theme.body %></b></div>
+    <div>皮算用: <%= post.body %></div>
+  <% end %>
 <% end %>
-</table>
 
 <br />
 <%= paginate @posts %>
-
-<%= link_to 'New Post', new_post_path %>
