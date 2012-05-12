@@ -167,9 +167,17 @@
       var width = $post.outerWidth(true);
       var height = $post.outerHeight(true);
 
+      var $theme = $('#theme h2');
+      var themeHeight = $theme.height();
+
+      var top = (Math.random() * ((canvasHeight -themeHeight)/2 - height));
+      if (Math.random()*2 > 1) {
+        top = canvasHeight - top - height;
+      }
+
       return {
         left: (Math.random() * (canvasWidth - width)),
-        top: (Math.random() * (canvasHeight - height))
+        top: top
       };
     },
 
