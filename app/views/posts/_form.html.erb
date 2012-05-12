@@ -22,7 +22,7 @@
 
     <% if @already_post.nil? %>
       <div class="field">
-        <%= f.label :body, 'あなたの皮算用を入力しましょう' %><br />
+        <%= f.label :body, 'あなたの皮算用を入力しましょう（140字以内）' %><br />
         <%= f.text_area :body, :size => '40x3' %>
       </div>
       <%= f.hidden_field :user_id, :value => @user.id %>

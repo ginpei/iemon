@@ -43,7 +43,7 @@ class PostsController < ApplicationController
   def create
     login_required
     @user = current_user
-    @post =Post.new
+    @post = Post.new
     @post.user_id = @user.id
     @post.theme_id = params[:post][:theme_id]
     unless (info = "#{@user.age}#{@user.job}#{@user.gender}").blank?
@@ -54,6 +54,7 @@ class PostsController < ApplicationController
       if @post.save
         format.html { redirect_to posts_url, notice: 'Post was successfully created.' }
       else
+        @today = Theme.active.first
         format.html { render action: "new" }
       end
     end
