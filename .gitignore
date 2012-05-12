@@ -10,13 +10,13 @@
 # Ignore the default SQLite database.
 /db/*.sqlite3
 
-# Ignore secret keys for usign API. (oAuth)
-config/initializers/local_omniauth.rb
+# Ignore secret keys for usign API.
+/config/initializers/local_omniauth.rb
+/config/initializers/local_tweetauth.rb
 
 # Ignore all logfiles and tempfiles.
 /log/*.log
 /tmp
 *.swp
-
-/config/initializers/local_omniauth.rb
-/config/initializers/local_tweetauth.rb
+.DS_Store
+._*

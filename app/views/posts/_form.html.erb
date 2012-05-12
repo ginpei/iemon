@@ -13,26 +13,17 @@
 
   <% if @today.nil? %>
     <div><b>today's theme is not found...</b></div>
-  <% else %>
+  <% elsif @already_post.nil? %>
     <div class="field">
-      <%= f.label :theme, 'お題' %>:
-      <%= @today.body %>
       <%= f.hidden_field :theme_id, :value => @today.id %>
-    </div>
-
-    <% if @already_post.nil? %>
-      <div class="field">
-        <%= f.label :body, 'あなたの皮算用を入力しましょう（140字以内）' %><br />
-        <%= f.text_area :body, :size => '40x3' %>
-      </div>
       <%= f.hidden_field :user_id, :value => @user.id %>
-      <div class="actions">
-        <%= f.submit '皮算' %>
-      </div>
-    <% else %>
-        皮算用: <b>"<%= @already_post.body %>"</b><br />
-        <p>memo: Today's post already exist...</p>
-    <% end %>
-
+      <%= f.text_area :body, :size => '60x4' %>
+    </div>
+    <div class="action">
+      <%= f.submit 'かわざん！', :id => 'post' %>
+    </div>
+  <% else %>
+      皮算用: <b>"<%= @already_post.body %>"</b><br />
+      <p>memo: Today's post already exist...</p>
   <% end %>
 <% end %>
