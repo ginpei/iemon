@@ -22,6 +22,11 @@ class PostsController < ApplicationController
     @today = Theme.today
     @user = current_user
 
+    unless @today.nil?
+      @already_post = Post.where(:theme_id => @today.id).where(:user_id => @user.id).first
+    end
+      p @already_post
+
     respond_to do |format|
       format.html # new.html.erb
     end
@@ -36,7 +41,6 @@ class PostsController < ApplicationController
     @post.theme_id = params[:post][:theme_id]
     @post.body = params[:post][:body]
 
-    p @post
 
     respond_to do |format|
       if @post.save

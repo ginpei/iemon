@@ -19,13 +19,20 @@
       <%= @today.body %>
       <%= f.hidden_field :theme_id, :value => @today.id %>
     </div>
-    <div class="field">
-      <%= f.label :body %><br />
-      <%= f.text_field :body %>
-    </div>
-    <%= f.hidden_field :user_id, :value => @user.id %>
-    <div class="actions">
-      <%= f.submit %>
-    </div>
+
+    <% if @already_post.nil? %>
+      <div class="field">
+        <%= f.label :body %><br />
+        <%= f.text_field :body %>
+      </div>
+      <%= f.hidden_field :user_id, :value => @user.id %>
+      <div class="actions">
+        <%= f.submit %>
+      </div>
+    <% else %>
+        <%= f.label :body %><br />
+        <%= @already_post.body %>
+    <% end %>
+
   <% end %>
 <% end %>
