@@ -1,5 +1,5 @@
 Iemon::Application.routes.draw do
-  resources :posts
+  resources :posts, :only => [:index, :new, :create]
 
   resources :themes, :only => [:index, :show, :new, :create] # :new and :create are temporary...
 
