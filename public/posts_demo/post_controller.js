@@ -20,7 +20,7 @@
      * Max count of posts in the page same time.
      * @type Number
      */
-    MAX_VISIBLES: 30,
+    MAX_VISIBLES: 10,
 
     /**
      * Post data.
@@ -219,7 +219,7 @@
      */
     _powan: function($post) {
       var INTERVAL = 100;
-      var scales = [-2, 10, 0, 3, 0, 1, 0];
+      var scales = [-2, 20, 0, 10, 0, 5, 0, 2, 0];
       var that = this;
       function push(i) {
         setTimeout(function() {
