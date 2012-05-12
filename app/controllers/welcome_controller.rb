@@ -3,4 +3,7 @@ class WelcomeController < ApplicationController
     @theme = Theme.active.first
     render 'themes/show'
   end
+
+  def about
+  end
 end

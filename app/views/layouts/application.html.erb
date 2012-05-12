@@ -24,7 +24,7 @@
           <% end %>
           <li>
           <% if current_user %>
-            <%= current_user.name %> : <%= link_to "Logout" , logout_path %>
+            <%= link_to "#{current_user.name} : Logout" , logout_path %>
           <% else %>
             <%= link_to "Login", "/auth/#{DEFAULT_PROVIDER}" %>
           <% end %>
