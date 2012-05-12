@@ -17,3 +17,5 @@ config/initializers/local_omniauth.rb
 /log/*.log
 /tmp
 *.swp
+
+/config/initializers/local_omniauth.rb
