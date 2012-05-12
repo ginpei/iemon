@@ -8,14 +8,29 @@
 </head>
 <body>
 
-<%= link_to "home", "/" %> |
+<%= yield %>
+
+<hr/>
+
+<h3>menu</h3>
+
+<ul>
+  <% {
+    'トップ' => '/',
+    '今日のお題'  => '/posts/new',
+    '過去の皮算用'  => '/posts',
+    'お題リスト'  => '/themes',
+    'ユーザー設定'  => '/profile'
+    }.each do |name, path| %>
+    <li><%= link_to name, path %>
+  <% end %>
+</ul>
+
 <% if current_user %>
   <%= current_user.name %> : <%= link_to "Logout" , logout_path %>
 <% else %>
   <%= link_to "Login", "/auth/#{DEFAULT_PROVIDER}" %>
 <% end %>
-
-<%= yield %>
 
 </body>
 </html>
