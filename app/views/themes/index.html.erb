@@ -6,6 +6,7 @@ admin: <%= link_to 'New Theme', new_theme_path %>
   <hr />
   <div><%= theme.target_date %></div>
   <div>お題: <b><%= link_to theme.body, theme %></b></div>
+  <div><%= theme.posts.limit(3).map &:body %></div>
 <% end %>
 
 <br />
