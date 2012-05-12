@@ -18,22 +18,22 @@
 }
 #theme-posts .date {
   line-height: 40px;
-  margin: 0 80px;
+  margin: 0 20px;
 }
 #theme-posts .date img {
   margin: 0 .2em;
   vertical-align: bottom;
 }
 #theme-posts h2 {
-  margin: 0 80px;
+  margin: 0 20px;
   padding: 10px 0;
 }
 #theme-posts .post {
   background-color: #ffd1ab;
   border: solid 3px #ffc19b;
-  border-radius: 80px;
+  border-radius: 30px;
   max-width: 60%;
-  padding: 50px;
+  padding: 25px;
   position: absolute;
   -webkit-transform: scale(0);
   left: -9999px;

@@ -23,7 +23,7 @@
      * Max count of posts in the page same time.
      * @type Number
      */
-    MAX_VISIBLES: 15,
+    MAX_VISIBLES: 10,
 
     /**
      * Post data.
