@@ -1,0 +1,46 @@
+<!DOCTYPE HTML>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=640, user-scalable=no" />
+    <title>捕らぬ狸の皮算用</title>
+    <style type="text/css">
+html, body {
+  height: 100%;
+}
+body {
+  font-size: 40px;
+  margin: 0;
+}
+
+#viewport {
+  height: 100%;
+  position: relative;
+}
+
+.comment {
+    background-color: #fff;
+    border: double 3px #9cf;
+    padding: 20px;
+    position: absolute;
+    text-align: center;
+    -webkit-transition: all 1s;
+    -webkit-transform: scale(0);
+    top: 50%;
+    left: 50%;
+}
+    </style>
+  </head>
+  <body>
+    <div id="viewport">
+      <h1>50万円もらえたら？</h1>
+    </div>
+    <div>
+      <script id="template-comment" type="text/plain">
+        <div class="comment">{#text}</div>
+      </script>
+      <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
+      <script src="theme.js"></script>
+    </div>
+  </body>
+</html>
