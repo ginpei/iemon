@@ -1,5 +1,5 @@
-ENV['TWITTER_KEY'] = "cHLNdPK4BPoXtghkowfjLw"
-ENV['TWITTER_SECRET'] = "snrURdBxphS3BOg4HK5ozBRzUThm6fGUTpwyG55NlSE"
+ENV['TWITTER_KEY'] = "VGPObUV3PWCC5RYU2lQmWw"
+ENV['TWITTER_SECRET'] = "MqOE6OlZaUDU2erUPHZtBAgpo8SN83S6Ne1BL5fFqU"
 
 Rails.application.config.middleware.use OmniAuth::Builder do
   provider :developer unless Rails.env.production?
