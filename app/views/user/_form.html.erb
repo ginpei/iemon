@@ -11,19 +11,19 @@
     </div>
   <% end %>
 
-  <div class="field">
-    <%= f.label :gender %><br />
-    <%= f.select :gender, %w(非公開 男性 女性) %>
-  </div>
-  <div class="field">
-    <%= f.label :age %><br />
-    <%= f.select :age, %w(非公開 10代 20代 30代 40代 50代 60代) %>
-  </div>
-  <div class="field">
-    <%= f.label :job %><br />
-    <%= f.select :job, %w(非公開 会社員 自営業 公務員 フリーター 学生 無職 その他)  %>
-  </div>
-  <div class="actions">
-    <%= f.submit '保存' %>
-  </div>
+    <div class="field">
+        <%= f.label :gender, '性別' %>
+        <%= f.select :gender, %w(非公開 男性 女性) %>
+    </div>
+    <div class="field">
+        <%= f.label :age, '年齢' %>
+        <%= f.select :age, %w(非公開 10代 20代 30代 40代 50代 60代) %>
+    </div>
+    <div class="field">
+        <%= f.label :job, '職業' %>
+        <%= f.select :job, %w(非公開 会社員 自営業 公務員 フリーター 学生 無職 その他)  %>
+    </div>
+    <div class="action">
+      <%= f.submit '保存', :id => 'commit' %>
+    </div>
 <% end %>

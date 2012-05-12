@@ -1,13 +1,12 @@
-<h1>過去の皮算用</h1>
-
-<% @posts.each do |post| %>
-  <hr />
-  <div><%= post.theme.target_date %></div>
-  <% unless post.theme.nil? %></td>
-    <div>お題: <b><%= post.theme.body %></b></div>
-    <div>皮算用: <%= post.body %></div>
-  <% end %>
-<% end %>
-
-<br />
+<div id="content">
+    <h1>過去の皮算用</h1>
+    <ul>
+      <% @posts.each do |post| %>
+    	<li>
+        	<span><%= post.theme.target_date %></span>お題: <%= post.theme.body %>
+            <div class="post">回答: <%= post.body %></div>
+        </li>
+        <% end %>
+    </ul>
 <%= paginate @posts %>
+</div>
