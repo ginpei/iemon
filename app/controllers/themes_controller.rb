@@ -78,4 +78,35 @@ class ThemesController < ApplicationController
       format.json { head :no_content }
     end
   end
+
+  # GET /themes/edit_active
+  def edit_active
+    @active = Theme.active.first
+    @themes = Theme.order("target_date DESC").all
+    respond_to do |format|
+      format.html # index.html.erb
+    end
+  end
+
+
+  # POST /themes/activate
+  def activate
+    if params[:active] != 'true'
+      respond_to do |format|
+        d = params['date']
+        date = Date.new(d["year"].to_i, d["month"].to_i, d["day"].to_i)
+        begin
+          Theme.activate(date)
+          format.html { redirect_to :edit_active_themes, notice: 'Theme was successfully actavatied.' }
+        rescue => e
+          format.html { redirect_to :edit_active_themes, warning: 'failed to update' }
+        end
+      end
+    else
+      Theme.deactivate
+      respond_to do |format|
+        format.html { redirect_to :edit_active_themes, notice: 'Theme was successfully deactivate.' }
+      end
+    end
+  end
 end

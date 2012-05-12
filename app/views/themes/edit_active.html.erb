@@ -1,0 +1,38 @@
+<%= flash[:notice] if flash[:notice] %><div>
+<%= flash[:warning] if flash[:warning] %><div>
+<%= flash[:error] if flash[:error] %><div>
+  アクティブなTheme: <br/>
+<% unless @active.nil? %>
+  <%= @active.body %><br />
+  <%= @active.target_date %><br />
+<% else %>
+  なし
+<% end %>
+</div>
+<%= form_tag('/themes/activate') do %>
+  <%= hidden_field_tag 'active', !@active.nil? %>
+  <% if @active.nil? %>
+    <%= select_date(Date.today, :start_year => 2012) %>
+  <% end %>
+  <br />
+  <% submit = @active.nil? ? 'activate' : 'deactivate' %>
+  <%= submit_tag submit %>
+<% end %>
+<table>
+  <tr>
+    <th>Body</th>
+    <th>Target date</th>
+    <th>Status</th>
+    <th>Updated at</th>
+  </tr>
+
+<% @themes.each do |theme| %>
+  <tr>
+    <td><%= theme.body %></td>
+    <td><%= theme.target_date %></td>
+    <td><%= theme.status %></td>
+    <td><%= theme.updated_at %></td>
+  </tr>
+<% end %>
+</table>
+
