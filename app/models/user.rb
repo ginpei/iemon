@@ -1,4 +1,6 @@
 class User < ActiveRecord::Base
+  class UnAuthorized < Exception ; end
+
   # attr_accessible :title, :body
 
   private

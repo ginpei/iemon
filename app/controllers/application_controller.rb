@@ -14,4 +14,12 @@ class ApplicationController < ActionController::Base
   end
 
   helper_method :current_user
+
+  def login_required
+    if session[:user_id]
+      @current_user ||= User.find(session[:user_id])
+    else
+      raise User::UnAuthorized
+    end
+  end
 end
