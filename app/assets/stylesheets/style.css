@@ -76,7 +76,7 @@ padding:0 .5em 1em;
 
 #content li{
 padding:0 0 1em 30px;
-background:url(images/list.png) left top no-repeat;
+background:url("list.png") left top no-repeat;
 -webkit-background-size: 21px 20px;
 background-size: 21px 20px;
 }
