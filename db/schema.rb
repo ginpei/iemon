@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120512064739) do
+ActiveRecord::Schema.define(:version => 20120512074013) do
 
   create_table "posts", :force => true do |t|
     t.datetime "created_at", :null => false
@@ -25,14 +25,7 @@ ActiveRecord::Schema.define(:version => 20120512064739) do
     t.datetime "updated_at", :null => false
   end
 
-  create_table "users", :force => true do |t|
-    t.string   "provider"
-    t.string   "uid"
-    t.string   "name"
-    t.string   "screen_name"
-    t.string   "image"
-    t.datetime "created_at",  :null => false
-    t.datetime "updated_at",  :null => false
-  end
+# Could not dump table "users" because of following StandardError
+#   Unknown type 'stirng' for column 'age'
 
 end
