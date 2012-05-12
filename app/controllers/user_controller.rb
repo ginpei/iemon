@@ -1,3 +1,5 @@
+# -*- encoding: utf-8 -*-
+
 class UserController < ApplicationController
   before_filter {
     login_required
@@ -13,6 +15,10 @@ class UserController < ApplicationController
 
   def update
     @user = current_user
+    # '非公開'を''に置き換える
+    %w(gender age job).each do |e|
+      params[:user][e] = '' if '非公開' == params[:user][e]
+    end
     if @user.update_attributes(params[:user])
       redirect_to '/profile', notice: 'User was successfully updated.'
     else

@@ -43,8 +43,9 @@ class PostsController < ApplicationController
     @post =Post.new
     @post.user_id = @user.id
     @post.theme_id = params[:post][:theme_id]
-    @post.body = params[:post][:body]
-
+    unless (info = "#{@user.age}#{@user.job}#{@user.gender}").blank?
+      @post.body = params[:post][:body] + "(#{info})"
+    end
 
     respond_to do |format|
       if @post.save
