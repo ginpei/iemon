@@ -31,7 +31,8 @@
       </div>
     <% else %>
         <%= f.label :body %><br />
-        <%= @already_post.body %>
+        <b>"<%= @already_post.body %>"</b><br />
+        Today's post already exist...
     <% end %>
 
   <% end %>
