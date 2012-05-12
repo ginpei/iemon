@@ -4,11 +4,12 @@ class PostsController < ApplicationController
   # GET /posts.json
   def index
     if params[:theme_id]
-      @posts = Post.all
+      @posts = Post.page(params[:page])
     else
       login_required
       @user = current_user
-      @posts = Post.where(:user_id => @user.id)
+      @posts = Post.where(:user_id => @user.id).page(params[:page])
+
     end
 
     respond_to do |format|
