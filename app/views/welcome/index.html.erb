@@ -1,4 +1,9 @@
+<%# notice / alert %>
+<%= simple_format(flash[:notice], style: "color: green;") unless flash[:notice].blank? %>
+<%= simple_format(flash[:alert], style: "color: red;") unless flash[:alert].blank? %>
+
 <h3>debug link</h3>
+
 <ul>
   <% %w(/ /answers/new /answers /themes /user /profile /profile/edit).each do |path| %>
     <li><%= link_to path, path %>

@@ -1,6 +1,7 @@
 Iemon::Application.routes.draw do
   get "/profile" => "user#index"
   get "/profile/edit" => "user#edit"
+  put "/user.:id" => "user#update"
 
   match "/auth/:provider/callback" => "sessions#callback"
   match "/auth/failure" => "sessions#failure"
