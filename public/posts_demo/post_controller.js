@@ -23,9 +23,16 @@
     MAX_VISIBLES: 30,
 
     /**
+     * Post data.
      * @type Array
      */
     _posts: null,
+
+    /**
+     * Height of the theme.
+     * @type Number
+     */
+    _themeHeight: null,
 
     /**
      * Start managing.
@@ -122,10 +129,13 @@
 
       // show
       // (wait for applying centered position)
+      var that = this;
+      css['-webkit-transform'] = 'scale(1)';
       setTimeout(function() {
         $post
           .addClass('ready')
           .css(css);
+          that._powan($post);
       }, 1);
     },
 
@@ -172,22 +182,15 @@
      * Update post elements style by order.
      */
     _updateStyles: function() {
+      // skip newest post that be applied special effect
+      // (so i=1 not 0)
       var $posts = this._getPostElements();
-      for (var i = 0, l = $posts.length; i < l; i++) {
+      for (var i = 1, l = $posts.length; i < l; i++) {
         var $post = $posts.eq(l-1 -i);
 
         var scale = 1 - (i / this.MAX_VISIBLES);
         this.setScale($post, scale);
       }
-
-      /*
-      var length = $posts.length;
-      var max = this.MAX_VISIBLES;
-      if (length > max - 1) {
-        var $oldestPost = $posts.filter(':lt(' + (length - max + 1) + ')');
-        this.setScale($oldestPost, 0.001);
-      }
-      */
     },
 
     /**
@@ -208,6 +211,24 @@
       var $canvas = this._getCanvas();
       var $posts = $canvas.children('.post');
       return $posts;
+    },
+
+    /**
+     * Animate post block.
+     * @param {HtmlElement} $post
+     */
+    _powan: function($post) {
+      var INTERVAL = 100;
+      var scales = [-2, 10, 0, 3, 0, 1, 0];
+      var that = this;
+      function push(i) {
+        setTimeout(function() {
+          that.setScale($post, (100 + scales[i]) /100);
+        }, i * INTERVAL);
+      }
+      for (var i = 0, l = scales.length; i < l; i++) {
+        push(i);
+      }
     },
 
     // TODO

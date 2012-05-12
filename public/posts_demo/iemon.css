@@ -28,14 +28,14 @@ h2 {
   height: 100%;
 }
 #theme h2 {
-  border: solid 1px #000;
-  border-radius: 10px;
-  box-shadow: -1px -1px 10px rgba(0,0,0,.5) inset;
+  background-color: #6cb;
+  color: #fff;
   display: none;
   margin: 20px;
   text-align: center;
-  padding: 10px;
+  padding: 10px 0;
   position: absolute;
+  width: 100%;
 }
 #theme .post {
   background-color: #fff;
@@ -50,6 +50,5 @@ h2 {
 }
 #theme .post.ready {
   display: block;
-  -webkit-transition: all 1s;
-  -webkit-transform: scale(1);
+  -webkit-transition: -webkit-transform .1s;
 }
