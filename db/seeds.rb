@@ -15,6 +15,14 @@
   rescue => e
     p e
   end
+  begin
+    th = Theme.new
+    th.body = "#{i}万当たったら"
+    th.target_date = nil
+    th.save
+  rescue => e
+    p e
+  end
 
 
   begin

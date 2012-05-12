@@ -3,4 +3,6 @@
 <%= render 'form' %>
 
 <%= link_to 'Show', @theme %> |
+<%= link_to 'Destroy', @theme, confirm: 'Are you sure?', method: :delete %> |
+<%= link_to 'Delete', @theme, :method => :delete, :confirm => 'Are you sure?' %> |
 <%= link_to 'Back', themes_path %>
