@@ -8,7 +8,7 @@ background:#fcf6eb;
 }
 
 .loading{
-background:#ff7200 url(images/loading.png) center center no-repeat;
+background:#ff7200 url(loading.png) center center no-repeat;
 -webkit-background-size:283px 157px;
 background-size:283px 157px;
 }
@@ -90,7 +90,7 @@ padding:0 .5em;
 
 #content li{
 padding:0 0 1em 30px;
-background:url(images/list.png) left top no-repeat;
+background:url(list.png) left top no-repeat;
 -webkit-background-size:21px 20px;
 background-size:21px 20px;
 }

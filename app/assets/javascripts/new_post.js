@@ -3,7 +3,11 @@
 		$('#content form').animate({opacity:'show'});
 	});
 
-  setInterval(function() {
-    $('#num').text(140 - $('#post_body').val().length);
-  }, 100);
+  (function() {
+    var text = $('#post_body').val();
+    if (text) {
+      $('#num').text(140 - text.length);
+      setTimeout(arguments.callee, 100);
+    }
+  })();
 })();

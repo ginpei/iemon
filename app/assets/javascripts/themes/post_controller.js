@@ -349,6 +349,8 @@
     '': null  // banpei : TODO : remove me
   });
 
-  var controller = new PostController();
-  controller.start();
+  if ($('#theme-posts').length > 0) {
+    var controller = new PostController();
+    controller.start();
+  }
 }(jQuery);

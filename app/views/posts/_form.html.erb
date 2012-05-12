@@ -14,6 +14,7 @@
   <% if @today.nil? %>
     <div><b>today's theme is not found...</b></div>
   <% elsif @already_post.nil? %>
+    <p id="text">3分間じっくり考えて入力してください。</p>
     <div class="field">
       <%= f.hidden_field :theme_id, :value => @today.id %>
       <%= f.hidden_field :user_id, :value => @user.id %>
