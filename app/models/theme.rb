@@ -26,6 +26,7 @@ class Theme < ActiveRecord::Base
     update_target.status = 'active'
     update_target.target_date = date
     update_target.save
+    return update_target
   end
 
   def self.deactivate

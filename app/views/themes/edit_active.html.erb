@@ -20,6 +20,7 @@
 <% end %>
 <table>
   <tr>
+    <th>id</th>
     <th>Body</th>
     <th>Target date</th>
     <th>Status</th>
@@ -30,6 +31,7 @@
 
 <% @themes.each do |theme| %>
   <tr>
+    <td><%= theme.id%></td>
     <td><%= theme.body %></td>
     <td><%= theme.target_date %></td>
     <td><%= theme.status %></td>

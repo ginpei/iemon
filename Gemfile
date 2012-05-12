@@ -46,6 +46,7 @@ gem "jquery-rails"
 gem "omniauth"
 gem "omniauth-twitter"
 gem "kaminari"
+gem 'twitter'
 
 group :development, :test do
   # for SAKURA VPS server

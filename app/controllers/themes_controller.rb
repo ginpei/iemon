@@ -1,3 +1,5 @@
+# encoding: utf-8
+
 class ThemesController < ApplicationController
   # GET /themes
   # GET /themes.json
@@ -106,7 +108,8 @@ class ThemesController < ApplicationController
         d = params['date']
         date = Date.new(d["year"].to_i, d["month"].to_i, d["day"].to_i)
         begin
-          Theme.activate(date)
+          theme = Theme.activate(date)
+          tweet(date, theme)
           format.html { redirect_to :edit_active_themes, notice: 'Theme was successfully actavatied.' }
         rescue => e
           format.html { redirect_to :edit_active_themes, warning: 'failed to update' }
@@ -119,4 +122,24 @@ class ThemesController < ApplicationController
       end
     end
   end
+
+  def tweet(date, theme)
+    begin
+      url = theme_url(theme, :host => 'oyasumi-tanuki.net', :port => nil)
+
+      body = "【本日の皮算用】#{theme.body}"
+      # chop
+      if body.size + url.size + 1 > 140
+        body_len = 140 - url.size + 1 + 3
+        body = body[0..body_len] + '...'
+      end
+      tweet = "#{body} #{url}"
+      tw = Twitter::Client.new
+      tw.update(tweet)
+    rescue => e
+      p e
+      raise
+    end
+  end
+  private :tweet
 end
