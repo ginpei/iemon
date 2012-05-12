@@ -20,7 +20,7 @@
      * Max count of posts in the page same time.
      * @type Number
      */
-    MAX_VISIBLES: 10,
+    MAX_VISIBLES: 15,
 
     /**
      * Post data.
@@ -121,8 +121,24 @@
       var $canvas = this._getCanvas();
       $canvas.append($post);
 
+      // fix size
+      $post.width($post.width());
+      $post.height($post.height());
+
       // get position, and not set here to be animated
-      var css = this._getPosition($post);
+      var pos = this._getPosition($post);
+      $post.data('position', pos);
+
+      // remember position
+      var $canvas = this._getCanvas();
+      var canvasWidth = $canvas.width();  // TODO: cache
+      var canvasHeight = $canvas.height();  // TODO: cache
+
+      var width = $post.outerWidth(true);
+      var height = $post.outerHeight(true);
+
+      $post.data('left-positioned', (pos.left + width/2 < canvasWidth/2));
+      $post.data('above-positioned', (pos.top + height/2 < canvasHeight/2));
 
       // centering
       this._centerPost($post);
@@ -130,11 +146,10 @@
       // show
       // (wait for applying centered position)
       var that = this;
-      css['-webkit-transform'] = 'scale(1)';
       setTimeout(function() {
         $post
           .addClass('ready')
-          .css(css);
+          .css(pos);
           that._powan($post);
       }, 1);
     },
@@ -187,10 +202,54 @@
       var $posts = this._getPostElements();
       for (var i = 1, l = $posts.length; i < l; i++) {
         var $post = $posts.eq(l-1 -i);
-
-        var scale = 1 - (i / this.MAX_VISIBLES);
-        this.setScale($post, scale);
+        this._updateScales($post, i);
+        this._updatePosition($post, i);
       }
+    },
+
+    /**
+     * Update post elements scale by order.
+     * @param {HtmlElement} $post
+     * @param {Number} index
+     */
+    _updateScales: function($post, index) {
+      var scale = 0.8 * Math.max(1 - (index / (this.MAX_VISIBLES-1)), 0);
+      this.setScale($post, scale);
+    },
+
+    /**
+     * Update post elements position.
+     * @param {HtmlElement} $post
+     * @param {Number} index
+     */
+    _updatePosition: function($post, index) {
+      function getNumber() {
+        var min = 10;
+        var max = 40;
+        return min + Math.random() * (max-min);
+      }
+
+      var pos = $post.data('position');
+      console.log(pos);
+
+      // horizontal
+      if ($post.data('left-positioned')) {
+        pos.left -= getNumber();
+      }
+      else {
+        pos.left += getNumber();
+      }
+
+      // vertical
+      if ($post.data('above-positioned')) {
+        pos.top -= getNumber();
+      }
+      else {
+        pos.top += getNumber();
+      }
+
+      // apply
+      $post.css(pos);
     },
 
     /**

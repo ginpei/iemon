@@ -26,6 +26,7 @@ h2 {
  */
 #theme {
   height: 100%;
+  overflow: hidden;
 }
 #theme h2 {
   background-color: #6cb;
@@ -50,5 +51,8 @@ h2 {
 }
 #theme .post.ready {
   display: block;
+  -webkit-transition: all 1s;
+}
+#theme .post.ready:last-child {
   -webkit-transition: -webkit-transform .1s;
 }
