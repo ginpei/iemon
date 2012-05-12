@@ -4,6 +4,7 @@ class ApplicationController < ActionController::Base
   before_filter :reset_session_expires
 
   rescue_from User::UnAuthorized, :with => -> { redirect_to '/auth/twitter' }
+  rescue_from User::NotAdminister , :with => -> { render :text =>'NotAdminister' }
 
   private
 
@@ -22,6 +23,14 @@ class ApplicationController < ActionController::Base
       @current_user ||= User.find(session[:user_id])
     else
       raise User::UnAuthorized
+    end
+  end
+
+  def only_administer
+    login_required
+    administers = %w(dan5ya masata_masata ginpei_jp uetsuhara understandard)
+    unless administers.include?(current_user.screen_name)
+      raise User::NotAdminister
     end
   end
 end

@@ -1,5 +1,6 @@
 class User < ActiveRecord::Base
   class UnAuthorized < Exception ; end
+  class NotAdminister < Exception ; end
 
   attr_accessible :gender, :age, :job
 

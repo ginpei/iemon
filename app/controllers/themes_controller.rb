@@ -24,6 +24,7 @@ class ThemesController < ApplicationController
   # GET /themes/new
   # GET /themes/new.json
   def new
+    only_administer
     @theme = Theme.new
 
     respond_to do |format|
@@ -34,12 +35,14 @@ class ThemesController < ApplicationController
 
   # GET /themes/1/edit
   def edit
+    only_administer
     @theme = Theme.find(params[:id])
   end
 
   # POST /themes
   # POST /themes.json
   def create
+    only_administer
     @theme = Theme.new(params[:theme])
 
     respond_to do |format|
@@ -54,6 +57,7 @@ class ThemesController < ApplicationController
   # PUT /themes/1
   # PUT /themes/1.json
   def update
+    only_administer
     @theme = Theme.find(params[:id])
 
     respond_to do |format|
@@ -70,6 +74,8 @@ class ThemesController < ApplicationController
   # DELETE /themes/1
   # DELETE /themes/1.json
   def destroy
+    only_administer
+
     @theme = Theme.find(params[:id])
     @theme.destroy
 
@@ -81,6 +87,8 @@ class ThemesController < ApplicationController
 
   # GET /themes/edit_active
   def edit_active
+    only_administer
+
     @active = Theme.active.first
     @themes = Theme.order("target_date DESC").all
     respond_to do |format|
@@ -91,6 +99,8 @@ class ThemesController < ApplicationController
 
   # POST /themes/activate
   def activate
+    only_administer
+
     if params[:active] != 'true'
       respond_to do |format|
         d = params['date']
