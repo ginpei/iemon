@@ -11,11 +11,9 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120424015135) do
+ActiveRecord::Schema.define(:version => 20120512064739) do
 
-  create_table "players", :force => true do |t|
-    t.integer  "user_id"
-    t.text     "data"
+  create_table "posts", :force => true do |t|
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
   end
