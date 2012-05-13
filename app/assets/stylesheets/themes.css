@@ -1,0 +1,69 @@
+/**
+ * Posts for the theme
+ */
+#theme-posts {
+  height: 100%;
+  font-size: 20px;
+  overflow: hidden;
+  position: absolute;
+  top: 0;
+  width: 100%;
+}
+#theme-posts .header {
+  background-color: #ff7200;
+  color: #fff;
+  display: none;
+  position: absolute;
+  width: 100%;
+}
+#theme-posts .date {
+  line-height: 40px;
+  margin: 0 20px;
+}
+#theme-posts .date img {
+  margin: 0 .2em;
+  vertical-align: bottom;
+}
+#theme-posts h2 {
+  margin: 0 20px;
+  padding: 10px 0;
+}
+#theme-posts .post {
+  background-color: #ffd1ab;
+  border: solid 3px #ffc19b;
+  border-radius: 30px;
+  max-width: 60%;
+  padding: 25px;
+  position: absolute;
+  -webkit-transform: scale(0);
+  left: -9999px;
+}
+#theme-posts .post.ready {
+  display: block;
+  -webkit-transition: all 1s;
+}
+#theme-posts .post.ready:last-child {
+  -webkit-transition: -webkit-transform .1s;
+}
+#theme-posts .post .body {
+  text-align: center;
+}
+#theme-posts .post .author {
+  text-align: right;
+}
+#theme-posts .post .spike {
+  background-image: url("fukidashi-spike.gif");
+  background-position: -25px 0;
+  height: 21px;
+  left: 0;
+  margin: auto;
+  position: absolute;
+  right: 0;
+  bottom: 100%;
+  width: 25px;
+}
+#theme-posts .post.above-positioned .spike {
+  background-position: 0 0;
+  bottom: auto;
+  top: 100%;
+}

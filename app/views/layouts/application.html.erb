@@ -5,11 +5,14 @@
 <meta name="viewport" content="width=device-width; initial-scale=1.0">
 <%= stylesheet_link_tag    "application", :media => "all" %>
 <%= csrf_meta_tags %>
+<link rel="apple-touch-icon" href="/apple-touch-icon.png">
+<link rel="shortcut icon" href="/favicon.ico" type="image/vnd.microsoft.icon">
+<link rel="icon" href="/favicon.ico" type="image/vnd.microsoft.icon">
 <title>おやすみたぬき</title>
 </head>
 <body>
 <div id="head">
-    <div id="logo"><img src="images/logo.png" width="36" height="34" alt="メニュー"></div>
+    <div id="logo"><%= image_tag 'logo.png', :size => '36x34', :alt => 'メニュー' %></div>
     <div id="menu">
         <ul>
           <% {
