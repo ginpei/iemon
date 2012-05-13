@@ -4,8 +4,9 @@
 	});
 
   (function() {
-    var text = $('#post_body').val();
-    if (text) {
+    var $text = $('#post_body');
+    if ($text.length > 0) {
+      var text = $text.val();
       $('#num').text(140 - text.length);
       setTimeout(arguments.callee, 100);
     }

@@ -272,6 +272,9 @@
       }
 
       var pos = $post.data('position');
+      if (!pos) {
+        return;
+      }
 
       // horizontal
       if ($post.data('left-positioned')) {
