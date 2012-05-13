@@ -23,7 +23,9 @@
       <%= f.submit 'かわざん！', :id => 'post' %>
     </div>
   <% else %>
-      皮算用: <b>"<%= @already_post.body %>"</b><br />
-      <p>memo: Today's post already exist...</p>
+    <div id="already_post">
+      <p class="body">回答: <b>"<%= @already_post.body %>"</p>
+      <p class="notice">入力済みです！</p>
+    </div>
   <% end %>
 <% end %>
