@@ -161,6 +161,12 @@ background:linear-gradient(to bottom, #f0e5d1, #e3d9c5);
 box-shadow:0 0 1px rgba(203,190,170,1);
 }
 
+#content #already_post {
+}
+#content #already_post p.notice {
+font-weight:normal;
+}
+
 #content.new form{
 display:none;
 }
