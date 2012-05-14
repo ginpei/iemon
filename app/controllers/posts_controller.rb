@@ -6,7 +6,7 @@ class PostsController < ApplicationController
   # GET /posts.json
   def index
     if params[:theme_id]
-      @posts = Post.includes(:user).page(params[:page])
+      @posts = Theme.find(params[:theme_id]).posts.includes(:user).page(params[:page])
     else
       login_required
       @user = current_user
