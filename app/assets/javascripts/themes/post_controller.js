@@ -70,14 +70,18 @@
     loadPosts: function() {
       var that = this;
       var url = '/themes/' + g_themeId + '/posts.json?page=' + this._page;
-      this._page++;
       $.ajax(url, {
         success: function(data, textStatus, xhr) {
           if (data.length < 1) {
-            that._page = 1;
-            that.loadPosts();
+            if (that._page != 1) {
+              that._page = 1;
+              that.loadPosts();
+            }
             return;
           }
+
+          that._page++;
+
 
           var posts = that._posts = [];
 
