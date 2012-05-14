@@ -69,7 +69,7 @@
      */
     loadPosts: function() {
       var that = this;
-      var url = '/themes/2/posts.json?page=' + this._page;
+      var url = '/themes/' + g_themeId + '/posts.json?page=' + this._page;
       this._page++;
       $.ajax(url, {
         success: function(data, textStatus, xhr) {
