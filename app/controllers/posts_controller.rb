@@ -55,7 +55,7 @@ class PostsController < ApplicationController
 
     respond_to do |format|
       if @post.save
-        format.html { redirect_to posts_url, notice: 'Post was successfully created.' }
+        format.html { redirect_to :controller => :welcome, :action => :index }
         tweet(@user, @post.body)
 
       else
