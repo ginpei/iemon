@@ -31,6 +31,9 @@
           <% else %>
             <%= link_to "Login", "/auth/#{DEFAULT_PROVIDER}" %>
           <% end %>
+          <% if admin_user? %>
+            <li><%= link_to '[admin]お題編集', '/themes/edit_active' %></li>
+          <% end %>
         </ul>
     </div>
 </div>

@@ -26,10 +26,19 @@ class ApplicationController < ActionController::Base
     end
   end
 
+  ADMINISTERS = %w(dan5ya masata_masata ginpei_jp uetsuhara understandard)
+  def admin_user?
+    if current_user 
+      ADMINISTERS.include?(current_user.screen_name)
+    else
+      false
+    end
+  end
+  helper_method :admin_user?
+
   def only_administer
     login_required
-    administers = %w(dan5ya masata_masata ginpei_jp uetsuhara understandard)
-    unless administers.include?(current_user.screen_name)
+    unless ADMINISTERS.include?(current_user.screen_name)
       raise User::NotAdminister
     end
   end
